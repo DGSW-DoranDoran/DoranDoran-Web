@@ -1,3 +1,5 @@
+@import "./ColorScheme.scss";
+
 .container {
   display: flex;
   align-items: center;
@@ -8,7 +10,8 @@
 }
 
 .logo {
-  color: blue;
+  color: $my_purple;
+  font-size: 1.7rem;
 }
 
 .inputArea {
@@ -26,6 +29,17 @@
   outline: none;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease-out;
+}
+
+a:hover {
+  color: $my_blue;
+}
+
+a,
 span {
   margin-right: 30px;
 }

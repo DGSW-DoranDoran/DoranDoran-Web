@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Navbar.module.scss";
+import { Link } from "react-router-dom";
+import styles from "style/Navbar.module.scss";
 import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
@@ -13,10 +14,10 @@ const Navbar = () => {
           />
           <input type="text" placeholder="검색" className={styles.input} />
         </div>
-        <span>팀 생성</span>
-        <span>마이페이지</span>
-        <span>로그인</span>
-        <span>회원가입</span>
+        <Link to="/">팀 생성</Link>
+        <Link to="/">마이페이지</Link>
+        <Link to="/">로그인</Link>
+        <Link to="/">회원가입</Link>
       </div>
     </>
   );
