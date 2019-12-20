@@ -1,54 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import styles from "style/Navbar.module.scss";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          padding: "35px",
-          boxShadow:
-            "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
-        }}
-      >
-        <span
-          style={{
-            marginRight: 40,
-            color: "blue"
-          }}
-        >
-          도란도란
-        </span>
-        <span
-          style={{
-            marginRight: 20
-          }}
-        >
-          팀 생성
-        </span>
-        <span
-          style={{
-            marginRight: 20
-          }}
-        >
-          마이페이지
-        </span>
-        <span
-          style={{
-            marginRight: 20
-          }}
-        >
-          로그인
-        </span>
-        <span
-          style={{
-            marginRight: 20
-          }}
-        >
-          회원가입
-        </span>
+      <div className={styles.container}>
+        <span className={styles.logo}>도란도란</span>
+        <div className={styles.inputArea}>
+          <FaSearch
+            style={{ verticalAlign: "middle", color: "gray", marginRight: 10 }}
+          />
+          <input type="text" placeholder="검색" className={styles.input} />
+        </div>
+        <Link to="/">팀 생성</Link>
+        <Link to="/">마이페이지</Link>
+        <Link to="/">로그인</Link>
+        <Link to="/">회원가입</Link>
       </div>
     </>
   );

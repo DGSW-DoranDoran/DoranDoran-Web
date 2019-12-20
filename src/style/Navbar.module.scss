@@ -1,0 +1,45 @@
+@import "./ColorScheme.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 35px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  color: $my_purple;
+  font-size: 1.7rem;
+}
+
+.inputArea {
+  display: inline-block;
+  margin-right: 52%;
+  border: 1px solid #b3b3d7;
+  padding: 12px;
+}
+
+.input {
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease-out;
+}
+
+a:hover {
+  color: $my_blue;
+}
+
+a,
+span {
+  margin-right: 30px;
+}

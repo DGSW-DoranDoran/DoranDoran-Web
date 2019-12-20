@@ -1,4 +1,8 @@
-html, body, #root {
+@import-normalize;
+
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
 }

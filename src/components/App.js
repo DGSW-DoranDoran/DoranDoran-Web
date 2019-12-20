@@ -1,7 +1,5 @@
 import React from "react";
 import { Switch, Route /* Redirect */ } from "react-router-dom";
-import "./Reset.css";
-import "./App.scss";
 import TestPage from "pages/TestPage";
 import Navbar from "./Navbar/Navbar";
 import LoginPage from "../pages/LoginPage";
