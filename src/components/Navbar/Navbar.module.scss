@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 35px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  color: blue;
+}
+
+.inputArea {
+  display: inline-block;
+  margin-right: 52%;
+  border: 1px solid #b3b3d7;
+  padding: 12px;
+}
+
+.input {
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+span {
+  margin-right: 30px;
+}
