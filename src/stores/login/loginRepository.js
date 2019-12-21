@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { SERVER } from '../../config/config.json';
+import axios from "axios";
+import { SERVER } from "../../config/config.json";
 
 class loginRepository {
   login = async (username, password) => {
@@ -8,7 +8,7 @@ class loginRepository {
     await axios
       .post(`${SERVER}/api/login/`, {
         username,
-        password,
+        password
       })
       .then(({ data }) => {
         token = data.data;
@@ -18,7 +18,7 @@ class loginRepository {
         console.log(response);
       });
     return token;
-  }
+  };
 }
 
 export default new loginRepository();
