@@ -1,6 +1,6 @@
 import React from "react";
 import MakeTeamContainer from "containers/MakeTeam/MakeTeamContainer";
-import PageTemplate from "components/common/PageTemplate/PageTemplate";
+import PageTemplate from "components/common/PageTemplate";
 
 const MakeTeamPage = () => {
   return (

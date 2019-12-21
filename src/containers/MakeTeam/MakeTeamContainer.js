@@ -1,29 +1,11 @@
 import React from "react";
-import Navbar from "components/Navbar/Navbar";
-import MakeTeam from "components/MakeTeam/MakeTeam";
+import Navbar from "components/Navbar";
+import MakeTeam from "components/MakeTeam";
 
 const MakeTeamContainer = () => {
   return (
     <>
       <Navbar />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
-      <MakeTeam />
       <MakeTeam />
     </>
   );
