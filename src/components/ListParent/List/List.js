@@ -3,8 +3,10 @@ import ListCard from '../ListCard/ListCard';
 import "./List.scss";
 
 const List = (props) => {
+  const { className, teams } = props;
+
   return (
-    <div>
+    <div className={className !== undefined ? className : "listClass"}>
       <div className="list">
         <span style={{
           width: "550px",
@@ -27,7 +29,15 @@ const List = (props) => {
           마감일
         </span>
       </div>
-      <ListCard/>
+      {teams !== undefined ? teams.map(item => {
+        return <ListCard team={item} />
+      }) : 
+        <div className="listCard err">
+          <span style={{
+            margin: "0 auto",
+          }}>등록된 팀이 없습니다.</span>
+        </div>
+      }
     </div>
   )
 }
