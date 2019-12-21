@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
+import MyPage from "pages/MyPage/MyPage";
 
 const Navbar = () => {
   const inputArea = useRef(null);
@@ -35,7 +36,7 @@ const Navbar = () => {
         <Link to="/" className={styles.a}>
           그룹 생성
         </Link>
-        <Link to="/" className={styles.a}>
+        <Link to="/MyPage" className={styles.a}>
           마이페이지
         </Link>
         <Link to="/login" className={styles.a}>
