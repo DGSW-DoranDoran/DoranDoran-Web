@@ -1,9 +1,12 @@
 .listCard {
   top: -10px;
-  margin: 0 auto;
   border: 1px solid #f2f4f7;
-  width: 850px;
+  width: 100%;
   background: #fff;
   display: flex;
   position: relative;
+}
+
+.listCard div div {
+  box-sizing: border-box;
 }
