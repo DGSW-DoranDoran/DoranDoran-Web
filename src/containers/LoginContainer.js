@@ -43,6 +43,6 @@ const LoginContainer = ({ store }) => {
       </div>
    </>
   );
-}
+};
 
-export default inject('store')(observer(LoginContainer));
+export default inject("store")(observer(LoginContainer));

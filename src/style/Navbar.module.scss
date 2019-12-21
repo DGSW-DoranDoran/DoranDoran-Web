@@ -2,44 +2,106 @@
 
 .container {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 35px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  color: $my_blue;
 }
 
 .logo {
   color: $my_purple;
   font-size: 1.7rem;
+  vertical-align: middle;
+  font-weight: 200;
 }
 
-.inputArea {
+.input_area {
   display: inline-block;
-  margin-right: 52%;
-  border: 1px solid #b3b3d7;
-  padding: 12px;
+  margin-right: 55%;
+  border: 1px solid $my_gray;
+  padding: 7px;
+  border-radius: 2px;
+  transition: all 0.4s ease-out;
 }
 
 .input {
   border: none;
+  transition: all 0.4s ease-out;
+}
+
+.search_icon {
+  border: none;
+  background-color: transparent;
+  vertical-align: middle;
+  color: $my_gray;
+  margin-right: 10px;
+  transition: color 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .input:focus {
   outline: none;
 }
 
+.input_focus_on {
+  border: none;
+  background-color: $my_purple;
+  transform: scale(1.02);
+  color: white;
+  border-radius: 4px;
+}
+
+.input_focus_on::-webkit-input-placeholder {
+  color: white;
+  opacity: 1;
+  font-weight: 200;
+}
+
 a {
   text-decoration: none;
-  color: black;
+  color: $my_purple;
   transition: all 0.2s ease-out;
+  padding: 8px;
+  border-radius: 2px;
+  position: relative;
 }
 
 a:hover {
-  color: $my_blue;
+  color: white;
+  overflow: hidden;
+  z-index: 0;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+a:hover::before {
+  animation: scale_ani 1s forwards;
+  background-color: $my_purple;
 }
 
 a,
 span {
-  margin-right: 30px;
+  margin-right: 15px;
+}
+
+@keyframes scale_ani {
+  from {
+    transform: scale(0) translate(-25%, -25%);
+  }
+  to {
+    transform: scale(5);
+  }
 }

@@ -1,7 +1,25 @@
-.list {
+.err {
+  text-align: center;
+}
+
+.err span {
+  padding: 64px 0;
+  width: 160px;
+  text-align: center;
+}
+
+.listClass {
   margin: 0 auto;
-  border-radius: 10px;
   width: 850px;
+}
+
+.listClass span {
+  margin: 0;
+}
+
+.list {
+  border-radius: 10px;
+  width: 100%;
   height: 60px;
   background: #999;
   color: #fff;
