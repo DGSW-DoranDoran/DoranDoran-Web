@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import styles from "style/Navbar.module.scss";
+import styles from "./Navbar.module.scss";
 import { IconContext } from "react-icons";
 import { FaSearch } from "react-icons/fa";
 
@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <>
       <div className={styles.container}>
-        <span className={styles.logo}>도란도란</span>
+        <span className={`${styles.logo} ${styles.span}`}>도란도란</span>
         <div className={styles.input_area} ref={inputArea}>
           <IconContext.Provider value={{ className: styles.search_icon }}>
             <FaSearch />
@@ -32,10 +32,18 @@ const Navbar = () => {
             ref={input}
           />
         </div>
-        <Link to="/">그룹 생성</Link>
-        <Link to="/">마이페이지</Link>
-        <Link to="/login">로그인</Link>
-        <Link to="/">회원가입</Link>
+        <Link to="/" className={styles.a}>
+          그룹 생성
+        </Link>
+        <Link to="/" className={styles.a}>
+          마이페이지
+        </Link>
+        <Link to="/login" className={styles.a}>
+          로그인
+        </Link>
+        <Link to="/" className={styles.a}>
+          회원가입
+        </Link>
       </div>
     </>
   );

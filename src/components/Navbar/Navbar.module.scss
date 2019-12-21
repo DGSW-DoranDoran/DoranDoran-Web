@@ -1,14 +1,17 @@
-@import "./ColorScheme.scss";
+@import "style/ColorScheme.scss";
 
 .container {
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 0;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   width: 100%;
-  padding: 35px;
+  height: 5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   color: $my_blue;
+  background-color: #ffffff;
 }
 
 .logo {
@@ -59,7 +62,7 @@
   font-weight: 200;
 }
 
-a {
+.a {
   text-decoration: none;
   color: $my_purple;
   transition: all 0.2s ease-out;
@@ -68,13 +71,13 @@ a {
   position: relative;
 }
 
-a:hover {
+.a:hover {
   color: white;
   overflow: hidden;
   z-index: 0;
 }
 
-a::before {
+.a::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -87,13 +90,13 @@ a::before {
   background-color: transparent;
 }
 
-a:hover::before {
+.a:hover::before {
   animation: scale_ani 1s forwards;
   background-color: $my_purple;
 }
 
-a,
-span {
+.a,
+.span {
   margin-right: 15px;
 }
 
