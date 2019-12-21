@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
         <Link to="/">그룹 생성</Link>
         <Link to="/">마이페이지</Link>
-        <Link to="/">로그인</Link>
+        <Link to="/login">로그인</Link>
         <Link to="/">회원가입</Link>
       </div>
     </>
