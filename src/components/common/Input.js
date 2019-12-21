@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Input = ({value, onChange, placeholder, type, autocomplete}) => {
+const Input = ({value, onChange, placeholder, type, autocomplete, classname}) => {
 
   return (
     <input
+     style={{width: '100%', height: 'art'}}
      value={value}
      onChange={onChange}
      placeholder={placeholder}

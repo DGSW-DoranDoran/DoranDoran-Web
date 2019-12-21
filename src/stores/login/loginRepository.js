@@ -6,16 +6,16 @@ class loginRepository {
     let token = null;
 
     await axios
-      .post(`${SERVER}/api/login/`, {
-        username,
+      .post(`${SERVER}/auth/login`, {
+        id: username,
         password,
       })
       .then(({ data }) => {
         token = data.data;
         console.log(data);
       })
-      .catch(response => {
-        console.log(response);
+      .catch(err => {
+        console.log(err);
       });
     return token;
   }

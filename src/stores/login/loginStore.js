@@ -6,7 +6,7 @@ import loginRepository from './loginRepository';
 class loginStore {
   @observable username = "";
   @observable password = "";
-  @observable token = {};
+  @observable token = "";
 
   @action usernameOnChange = (value) => {
     this.username = value;
@@ -18,13 +18,14 @@ class loginStore {
 
   @action loginOnClick = async () => {
     this.token = await loginRepository.login();
+    if(this.token){
     localStorage.setItem(
       'userToken',
       JSON.stringify({
-        token: this.token.token,
-        refreshToken: this.token.refreshToken
+        token: this.token
       })
     )
+  }
   }
 }
 
