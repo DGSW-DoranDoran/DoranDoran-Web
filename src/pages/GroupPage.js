@@ -5,7 +5,7 @@ import PageTemplate from "components/common/PageTemplate";
 const GroupPage = ({match}) =>{
   return (
     <PageTemplate>
-    <GroupContainer groupId={match.params.groupid} />
+      <GroupContainer groupId={match.params.groupid} />
     </PageTemplate>
   );
 };

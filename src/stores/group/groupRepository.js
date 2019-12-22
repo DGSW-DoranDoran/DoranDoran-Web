@@ -6,11 +6,11 @@ class groupRepository {
     let group;
 
     await axios
-      .get(`${SERVER}/group/show/`,{
+      .get(`${SERVER}/group/show`,{
         group_id
       })
-      .then(response => {
-        console.log(response);
+      .then(({data:{group}}) => {
+        console.log(group);
       })
       .catch(err => {
         console.log(err);
@@ -19,27 +19,44 @@ class groupRepository {
   };
 
   getComment = async (group_id) => {
-    let comment;
-
+    let response;
+    
     await axios
-      .get(`${SERVER}/group/comment/`,{
-        group_id
+      .get(`${SERVER}/group/comment`,{
+        params: {
+          group_id
+        }
+      })
+      .then(({data : {data: {comment}}}) => {
+        response = comment;
+        console.log(response)
+      })
+      .catch(err => {
+        console.log(err);
+        return(err);
+      });
+  };
+
+  postComment = async (group_id, member_id, comment) => {
+    await axios
+      .post(`${SERVER}/group/comment`,{
+        group_id,
+        member_id,  
+        comment
       })
       .then(response => {
         console.log(response);
       })
       .catch(err => {
         console.log(err);
-      });
-      return comment;
-  };
+      })
+  }
 
-  postComment = async (group_id, member_id, comment) => {
+  applyJoin = async (group_id,member_id) => {
     await axios
-      .post(`${SERVER}/group/comment/`,{
-        group_id,
+      .post(`${SERVER}/group/join`, {
         member_id,
-        comment
+        group_id
       })
       .then(response => {
         console.log(response);
