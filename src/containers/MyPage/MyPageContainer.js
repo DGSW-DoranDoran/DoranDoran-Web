@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "components/Navbar";
 import MyPageWrapper from "components/MyPageWrapper/MyPageWrapper";
-import { useEffect } from "react";
 
 const MyPageContainer = () => {
   return (
