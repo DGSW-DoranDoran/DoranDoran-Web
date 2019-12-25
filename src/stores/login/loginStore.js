@@ -24,8 +24,8 @@ class loginStore {
     this.token = await loginRepository.login();
     if (this.token === null) {
       alert("로그인에 실패하였습니다.");
-      this.username = null;
-      this.password = null;
+      this.usernameOnChange("");
+      this.passwordOnChange("");
     } else if (this.token) {
       localStorage.setItem(
         "userToken",
