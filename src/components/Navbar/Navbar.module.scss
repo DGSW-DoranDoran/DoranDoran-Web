@@ -12,13 +12,16 @@
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   color: $my_blue;
   background-color: #ffffff;
+  z-index: 999;
 }
 
 .logo {
-  color: $my_purple;
-  font-size: 1.7rem;
+  color: $my_blue;
+  font-size: 1.5rem;
   vertical-align: middle;
-  font-weight: 200;
+  font-weight: 400;
+  border-right: 1px solid $my_blue;
+  padding-right: 1rem;
 }
 
 .input_area {
@@ -50,7 +53,7 @@
 
 .input_focus_on {
   border: none;
-  background-color: $my_purple;
+  background-color: $my_blue;
   transform: scale(1.02);
   color: white;
   border-radius: 4px;
@@ -64,7 +67,7 @@
 
 .a {
   text-decoration: none;
-  color: $my_purple;
+  color: $my_blue;
   transition: all 0.2s ease-out;
   padding: 8px;
   border-radius: 2px;
@@ -92,7 +95,7 @@
 
 .a:hover::before {
   animation: scale_ani 1s forwards;
-  background-color: $my_purple;
+  background-color: $my_blue;
 }
 
 .a,
