@@ -7,11 +7,11 @@ const MakeTeamContainer = ({ store }) => {
   const { makeTeamStore } = store;
 
   const CATEGORY_ENUM = {
-    대회: 0,
-    식사: 1,
-    게임: 2,
-    프로젝트: 3,
-    기타: 4
+    대회: 1,
+    식사: 2,
+    게임: 3,
+    프로젝트: 4,
+    기타: 5
   };
   const CATEGORY_KEYS = Object.keys(CATEGORY_ENUM);
 
@@ -26,7 +26,7 @@ const MakeTeamContainer = ({ store }) => {
             content: input[2],
             deadline_time: input[3],
             deadline_member_count: Number(input[4]),
-            image: null
+            image: input[5]
           });
         });
       }
@@ -38,7 +38,6 @@ const MakeTeamContainer = ({ store }) => {
       //빈 입력이 있는지 없는지
       if (!input.some(el => el === "")) {
         parseInput(input).then(res => {
-          console.log(res);
           makeTeamStore.postGroup(res);
         });
         alert("요청을 전송합니다");
@@ -48,10 +47,18 @@ const MakeTeamContainer = ({ store }) => {
     alert("입력 형식이 잘못되었습니다!");
   };
 
+  const categoryChangeHandle = category => {
+    makeTeamStore.setCurCategory(category);
+  };
+
   return (
     <>
       <Navbar />
-      <MakeTeam onSubmit={submitHandle} />
+      <MakeTeam
+        onSubmit={submitHandle}
+        curCategory={makeTeamStore.curCategory}
+        categoryChangeHandle={categoryChangeHandle}
+      />
     </>
   );
 };

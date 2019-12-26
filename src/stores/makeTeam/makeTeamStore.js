@@ -4,25 +4,34 @@ import makeTeamRepository from "./makeTeamRepository";
 
 @autobind
 class makeTeamStore {
+  constructor() {
+    this.POST_STATE = {
+      FAIL: -1,
+      LOADING: 1,
+      SUCCESS: 2
+    };
+  }
+
   @observable postState = 0;
+  @observable curCategory = "대회";
 
   @action postGroup = async input => {
-    const POST_STATE = {
-      fail: -1,
-      loading: 1,
-      success: 2
-    };
-
-    this.postState = POST_STATE.loading;
+    this.postState = this.POST_STATE.LOADING;
     await makeTeamRepository
       .postGroup(input)
       .then(res => {
-        this.postState = POST_STATE.success;
+        console.log(res);
+        this.postState = this.POST_STATE.SUCCESS;
       })
       .catch(err => {
-        console.log(err);
-        this.postState = POST_STATE.fail;
+        console.error(err);
+        this.postState = this.POST_STATE.FAIL;
       });
+  };
+
+  @action setCurCategory = category => {
+    console.log(`${this.curCategory} -> ${category}`);
+    this.curCategory = category;
   };
 }
 

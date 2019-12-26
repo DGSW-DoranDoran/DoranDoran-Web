@@ -1,0 +1,46 @@
+@import "style/ColorScheme.scss";
+
+.contain {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.category_contain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  background-color: $my_white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.group_contain {
+  position: absolute;
+  left: 15%;
+  top: 0;
+  width: 85%;
+  height: 100%;
+  background-color: blue;
+  z-index: 0;
+}
+
+.list_contain {
+  width: 100%;
+  height: 90%;
+  background-color: $my_smoothgray;
+}
+
+.page_contain {
+  width: 100%;
+  height: 10%;
+  background-color: $my_smoothgray;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}

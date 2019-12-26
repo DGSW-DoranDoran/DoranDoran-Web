@@ -22,6 +22,14 @@
   font-weight: 400;
   border-right: 1px solid $my_blue;
   padding-right: 1rem;
+
+  &:hover {
+    filter: brightness(1.3);
+  }
+}
+
+.logo_contain {
+  text-decoration: none;
 }
 
 .input_area {

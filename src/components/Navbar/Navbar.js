@@ -17,7 +17,9 @@ const Navbar = () => {
 
   return (
     <div className={styles.container}>
-      <span className={`${styles.logo} ${styles.span}`}>도란도란</span>
+      <Link to="/group" className={styles.logo_contain}>
+        <span className={`${styles.logo} ${styles.span}`}>도란도란</span>
+      </Link>
       <div className={styles.input_area} ref={inputArea}>
         <IconContext.Provider value={{ className: styles.search_icon }}>
           <FaSearch />

@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import Category from "components/common/Category";
 
-const MakeTeam = ({ onSubmit }) => {
+const MakeTeam = ({ onSubmit, curCategory, categoryChangeHandle }) => {
   const CATEGORY = ["대회", "식사", "게임", "프로젝트", "기타"];
 
   const name_ref = useRef(null);
@@ -24,7 +24,7 @@ const MakeTeam = ({ onSubmit }) => {
   const date_txt_ref = useRef(null);
   const name_txt_ref = useRef(null);
 
-  const [curCategory, setCurCategory] = useState(CATEGORY[0]);
+  let imageObj = null;
 
   const submitClickHandle = () => {
     const name = name_ref.current;
@@ -37,32 +37,32 @@ const MakeTeam = ({ onSubmit }) => {
       name.value,
       content.value,
       deadline_time.value,
-      deadline_member_count.value
+      deadline_member_count.value,
+      imageObj
     ]);
-  };
-
-  const categoryChangeHandle = category => {
-    console.log(`${curCategory} -> ${category}`);
-    setCurCategory(category);
   };
 
   const handleFiles = files => {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+
       if (!file.type.startsWith("image/")) {
         continue;
       }
-      const img = document.createElement("img");
-      img.classList.add(styles.img);
-      img.file = file;
-      img_dropbox_ref.current.appendChild(img);
+      imageObj = file;
+
+      const imgEl = document.createElement("img");
+      imgEl.classList.add(styles.img);
+      imgEl.file = file;
+      //console.log(imgEl.file);
+      img_dropbox_ref.current.appendChild(imgEl);
+
       const reader = new FileReader();
       reader.onload = (function(aImg) {
         return function(e) {
-          console.log(aImg);
           aImg.src = e.target.result;
         };
-      })(img);
+      })(imgEl);
       reader.readAsDataURL(file);
     }
   };
@@ -144,7 +144,7 @@ const MakeTeam = ({ onSubmit }) => {
           <textarea
             ref={content_ref}
             className={`${styles.input} ${styles.textarea}`}
-          ></textarea>
+          />
         </div>
         <div className={styles.block}>
           <IconContext.Provider value={{ className: styles.icon }}>
@@ -153,7 +153,7 @@ const MakeTeam = ({ onSubmit }) => {
           <span className={styles.input_title}>마감 일자</span>
           <input
             type="text"
-            placeholder="xxxx-xx-xx"
+            placeholder="0000-00-00 00:00"
             ref={deadline_time_ref}
             className={styles.input}
             onChange={e => {

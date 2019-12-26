@@ -1,11 +1,16 @@
 import axios from "axios";
-import { SERVER2 } from "../../config/config.json";
+import { KIM_SERVER } from "../../config/config.json";
 
 class makeTeamRepository {
-  postGroup = async input => {
-    await axios.post(`${SERVER2}/group/create`, input).then(res => {
-      console.log("그룹 생성 성공", res);
-    });
+  postGroup = input => {
+    const loginRes = JSON.parse(localStorage.getItem("userToken"));
+    const token = loginRes.token.data.token;
+    const config = {
+      headers: { token }
+    };
+
+    console.log(input);
+    return axios.post(`${KIM_SERVER}/group/create`, input, config);
   };
 }
 
