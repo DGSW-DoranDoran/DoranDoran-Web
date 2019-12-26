@@ -8,8 +8,7 @@ class loginStore {
   @observable username = "";
   @observable password = "";
   @observable token = "";
-  @observable userState = "";
-  @observable status = "";
+  // @observable status = "";
   // @observable flag = 0;
 
   @action usernameOnChange = value => {
@@ -21,46 +20,19 @@ class loginStore {
   };
 
   @action loginOnClick = async () => {
-    this.token = await loginRepository.login();
-    if (this.token) {
+    this.token = await loginRepository.login(this.username, this.password);
+    if (this.token === null) {
+      alert("로그인에 실패하였습니다.");
+      this.usernameOnChange("");
+      this.passwordOnChange("");
+    } else {
       localStorage.setItem(
         "userToken",
         JSON.stringify({
           token: this.token
         })
       );
-      window.location.reload();
-    } else if (this.token === null) {
-      alert("로그인에 실패하였습니다.");
-      this.usernameOnChange("");
-      this.passwordOnChange("");
-    }
-    console.log(
-      "id: " +
-        this.username +
-        "\t" +
-        "pw: " +
-        this.password +
-        "\t" +
-        "token: " +
-        this.token
-    );
-  };
-
-  @action checkToken = async (token, status) => {
-    if (token === null) {
-      return 0;
-    }
-    // eslint-disable-next-line default-case
-    switch (status) {
-      case 200:
-        return 1;
-      case 400:
-        return 0;
-      case 404:
-        return 0;
-      case 409:
-        return 0;
+      // window.location.reload();
     }
   };
 }

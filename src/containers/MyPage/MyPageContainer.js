@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "components/Navbar";
+import ChoiceHeader from "components/ChoiceHeader/ChoiceHeader";
 import MyPageWrapper from "components/MyPageWrapper/MyPageWrapper";
 
 const MyPageContainer = () => {
   return (
     <>
       <Navbar />
-      <MyPageWrapper />
+      <MyPageWrapper>
+        <ChoiceHeader />
+      </MyPageWrapper>
     </>
   );
 };

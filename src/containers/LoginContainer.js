@@ -5,7 +5,7 @@ import "style/Login.scss";
 
 const LoginContainer = ({ store, authenticated }) => {
   const { loginStore } = store;
-  loginStore.userState = null;
+  // loginStore.userState = null;
   // const [flag, setFlag] = useState(0);
 
   // async function fetchComment() {
