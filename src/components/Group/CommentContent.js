@@ -1,7 +1,6 @@
 import React from 'react';
 
-const CommentContent = ({content}) => {
-  console.log(content);
+const CommentContent = ({content,user_img,onClick}) => {
  
   let comment = content.map((item, index, array)=> {
     return (
@@ -18,23 +17,10 @@ const CommentContent = ({content}) => {
       </div>
     ) 
   })
-
-  let submitComment=(
-    <div>
-      <div>
-
-      </div>
-      <div>
-
-      </div>
-      <button></button>
-    </div>
-  );
   return (
-    <div className="group-commentContent">
-      {submitComment}
+      <>
       {comment}
-    </div>
+      </>
   );
 };
 

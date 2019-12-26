@@ -9,8 +9,14 @@ class loginStore {
   @observable password = "";
   @observable member;
   @observable token = "";
-  // @observable status = "";
-  // @observable flag = 0;
+  @observable authenticated = 0;
+
+  @action errormsg = () => {
+    if (this.status === 0) {
+      alert("로그인 에러");
+    }
+  };
+
   @action usernameOnChange = value => {
     this.username = value;
   };
@@ -34,7 +40,24 @@ class loginStore {
         })
       );
       this.member = data.data.member;
-      // window.location.reload();
+      console.log(this.member);
+
+      this.checkToken(1);
+      window.location.reload();
+    }
+  };
+
+  @action handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.loginOnClick();
+    }
+  };
+
+  @action checkToken = authenticated => {
+    if (authenticated === 1) {
+      return 1;
+    } else {
+      return 0;
     }
   };
   // @action logOutOnClick = async () => {

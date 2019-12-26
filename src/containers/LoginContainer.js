@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import "style/Login.scss";
 
 const LoginContainer = ({ store, authenticated }) => {
   const { loginStore } = store;
-  // loginStore.userState = null;
-  // const [flag, setFlag] = useState(0);
 
-  // async function fetchComment() {
-  //   setFlag(0);
-  //   const type = await checkToken(authenticated);
-  //   console.log(type);
-  //   setFlag(type);
-  // }
-
-  // useEffect(() => {
-  //   fetchComment();
-  // });
+  function fetch() {
+    if (loginStore.checkToken === 1) {
+      // eslint-disable-next-line no-unused-expressions
+      <Redirect to={"/makeTeam"} />;
+    }
+  }
 
   return (
     <>
-      {/* {flag === 1 && (
-        <Redirect to={{ pathname: "/", state: { authenticated } }} />
-      )} */}
+      {fetch}
       <div className="wrapper">
         <div className="session">
           <div className="left"></div>
@@ -42,6 +34,7 @@ const LoginContainer = ({ store, authenticated }) => {
                 placeholder="Username"
                 type="id"
                 autocomplete="off"
+                onKeyPress={loginStore.handleKeyPress}
               />
 
               <label className="log-label" for="id">
@@ -58,6 +51,7 @@ const LoginContainer = ({ store, authenticated }) => {
                 placeholder="password"
                 type="password"
                 autocomplete="off"
+                onKeyPress={loginStore.handleKeyPress}
               />
               <label className="log-label" for="password">
                 UserPassword:
