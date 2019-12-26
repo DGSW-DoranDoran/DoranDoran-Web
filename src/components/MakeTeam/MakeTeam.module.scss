@@ -1,9 +1,5 @@
 @import "style/ColorScheme.scss";
 
-.input::placeholder {
-  z-index: -1;
-}
-
 .contain {
   position: relative;
   height: 100%;
@@ -21,6 +17,9 @@
   left: 50%;
   width: 50%;
   height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .img {
@@ -39,9 +38,116 @@
   transform: translate(-50%, -50%);
   color: $my_blue;
   font-size: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid $my_blue;
   animation: breath_scale 2s infinite ease-out alternate;
+  border: 2px solid $my_blue;
+  border-radius: 4px;
+  padding: 40% 20% 40% 20%;
+  opacity: 0.7;
+}
+
+.input_title {
+  color: $my_blue;
+  display: inline-block;
+  width: 17%;
+  margin-left: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  vertical-align: middle;
+  //border-right: 4px solid $my_blue;
+  padding-right: 1rem;
+  margin-right: 2rem;
+}
+
+.block {
+  margin: 4rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 4px solid $my_blue;
+  padding-bottom: 2rem;
+}
+
+.deadline_member_contain {
+  margin-bottom: 0.5rem;
+  border-bottom: none;
+}
+
+.submit_contain {
+  height: 100%;
+}
+
+.submit {
+  position: relative;
+  border: none;
+  background-color: $my_blue;
+  color: $my_white;
+  border-radius: 3px;
+  width: 120px;
+  height: 60px;
+  padding: 10px;
+  transition: all 0.2s ease-out;
+  font-size: 1.1rem;
+  font-weight: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:hover {
+    border: 1px solid $my_blue;
+    color: $my_blue;
+    background-color: transparent;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+}
+
+.input {
+  border: none;
+  padding: 6px;
+  border: 1px solid $my_gray;
+  border-radius: 2px;
+  width: 25%;
+  transition: width 0.4s ease-out, text-align 0.4s ease-out,
+    height 0.4s ease-out;
+  font-family: Arial, "sans serif";
+
+  &::placeholder {
+    z-index: -1;
+    font-weight: 200;
+    font-size: 1rem;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $my_blue;
+    transform: scale(1.01);
+    transition: all 0.4s ease-out;
+    width: 32%;
+    height: 70%;
+    &::placeholder {
+      color: $my_blue;
+      opacity: 1;
+    }
+  }
+}
+
+.icon {
+  color: $my_blue;
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.textarea {
+  vertical-align: middle;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+.preview {
+  margin-left: 1rem;
+  color: $my_blue;
+  font-size: 1.3rem;
 }
 
 @keyframes breath_scale {

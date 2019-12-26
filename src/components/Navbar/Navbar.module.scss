@@ -36,6 +36,10 @@
 .input {
   border: none;
   transition: all 0.4s ease-out;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .search_icon {
@@ -47,22 +51,18 @@
   transition: color 0.4s ease-out, transform 0.4s ease-out;
 }
 
-.input:focus {
-  outline: none;
-}
-
 .input_focus_on {
   border: none;
   background-color: $my_blue;
   transform: scale(1.02);
   color: white;
   border-radius: 4px;
-}
 
-.input_focus_on::-webkit-input-placeholder {
-  color: white;
-  opacity: 1;
-  font-weight: 200;
+  &::placeholder {
+    color: white;
+    opacity: 1;
+    font-weight: 200;
+  }
 }
 
 .a {
@@ -72,30 +72,31 @@
   padding: 8px;
   border-radius: 2px;
   position: relative;
-}
+  font-size: 1rem;
 
-.a:hover {
-  color: white;
-  overflow: hidden;
-  z-index: 0;
-}
+  &:hover {
+    color: white;
+    overflow: hidden;
+    z-index: 0;
 
-.a::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-}
+    &::before {
+      animation: scale_ani 0.3s ease-in forwards;
+      background-color: $my_blue;
+    }
+  }
 
-.a:hover::before {
-  animation: scale_ani 1s forwards;
-  background-color: $my_blue;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
 }
 
 .a,
