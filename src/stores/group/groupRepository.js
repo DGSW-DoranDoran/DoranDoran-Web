@@ -10,7 +10,6 @@ class groupRepository {
       })
       .then(({data:{data:{groupInfo}}}) => {
         response = groupInfo
-        console.log(response)
       })
       .catch(err => {
         console.log(err);
@@ -29,7 +28,6 @@ class groupRepository {
       })
       .then(({data:{data:{comments}}}) => {
         response = comments;
-        console.log(comments)
       })
       .catch(err => {
         console.log(err);
@@ -38,33 +36,50 @@ class groupRepository {
       return response;
   };
 
-  postComment = async (group_id, member_id, comment) => {
+  postComment = async (group_id, member_id, comment,) => {
     await axios
-      .post(`${SERVER}/group/comment`,{
+      .post(`${SERVER}group/comment`,{
         group_id,
         member_id,  
         comment
       })
       .then(response => {
-        console.log(response);
+        window.location.reload();
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  applyJoin = async (group_id,member_id) => {
+  applyJoin = async (group_id,token) => {
     await axios
-      .post(`${SERVER}/group/join`, {
-        member_id,
+      .post(`${SERVER}group/join`, {
         group_id
-      })
+      },  {headers: { token: token }})
       .then(response => {
-        console.log(response);
+        alert("신청 완료");
+      })
+      .catch(err => {
+        console.log(err);
+        alert("이미 신청중인 그룹입니다.");
+      })
+  }
+
+  getMember = async (member_id) => {
+    let data;
+    await axios
+      .get(`${SERVER}auth/info`,{
+        params : {
+          member_id
+        }
+      })
+      .then(({data:{data:{info}}}) => {
+        data = info;
       })
       .catch(err => {
         console.log(err);
       })
+    return data;
   }
 }
 
