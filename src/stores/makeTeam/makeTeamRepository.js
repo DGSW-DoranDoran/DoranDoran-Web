@@ -1,5 +1,5 @@
 import axios from "axios";
-import { KIM_SERVER } from "../../config/config.json";
+import { SERVER } from "../../config/config.json";
 
 class makeTeamRepository {
   postGroup = input => {
@@ -10,7 +10,7 @@ class makeTeamRepository {
     };
 
     console.log(input);
-    return axios.post(`${KIM_SERVER}/group/create`, input, config);
+    return axios.post(`${SERVER}/group/create`, input, config);
   };
 }
 
