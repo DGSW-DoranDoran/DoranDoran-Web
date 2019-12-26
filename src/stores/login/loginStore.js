@@ -7,10 +7,10 @@ import loginRepository from "./loginRepository";
 class loginStore {
   @observable username = "";
   @observable password = "";
+  @observable member;
   @observable token = "";
   // @observable status = "";
   // @observable flag = 0;
-
   @action usernameOnChange = value => {
     this.username = value;
   };
@@ -20,7 +20,8 @@ class loginStore {
   };
 
   @action loginOnClick = async () => {
-    this.token = await loginRepository.login(this.username, this.password);
+    const data = await loginRepository.login(this.username, this.password);
+    this.token = data.data.token;
     if (this.token === null) {
       alert("로그인에 실패하였습니다.");
       this.usernameOnChange("");
@@ -32,9 +33,13 @@ class loginStore {
           token: this.token
         })
       );
+      this.member = data.data.member;
       // window.location.reload();
     }
   };
+  // @action logOutOnClick = async () => {
+  //   window.localStorage.removeItem();
+  // };
 }
 
 export default loginStore;

@@ -5,8 +5,6 @@ class loginRepository {
   login = async (username, password) => {
     let response = null;
     let status = null;
-    console.log(username, password);
-    console.log(`${SERVER}auth/login/`);
     await axios
       .post(`http://10.80.161.54:3001/auth/login/`, {
         id: username,
@@ -30,6 +28,7 @@ class loginRepository {
       })
       .catch(err => {
         console.log(err);
+        return 0;
       });
     return response;
   };
