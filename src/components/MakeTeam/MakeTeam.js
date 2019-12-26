@@ -1,10 +1,18 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styles from "./MakeTeam.module.scss";
+import { IconContext } from "react-icons";
+import {
+  FaListUl,
+  FaChalkboardTeacher,
+  FaClipboard,
+  FaRegCalendarTimes,
+  FaUserTimes
+} from "react-icons/fa";
+import Category from "components/common/Category";
 
-const MakeTeam = ({ onClick }) => {
+const MakeTeam = ({ onSubmit }) => {
   const CATEGORY = ["대회", "식사", "게임", "프로젝트", "기타"];
 
-  const categories_ref = useRef(null);
   const name_ref = useRef(null);
   const content_ref = useRef(null);
   const deadline_time_ref = useRef(null);
@@ -12,20 +20,30 @@ const MakeTeam = ({ onClick }) => {
 
   const img_dropbox_ref = useRef(null);
 
+  const num_txt_ref = useRef(null);
+  const date_txt_ref = useRef(null);
+  const name_txt_ref = useRef(null);
+
+  const [curCategory, setCurCategory] = useState(CATEGORY[0]);
+
   const submitClickHandle = () => {
-    const categories = categories_ref.current;
     const name = name_ref.current;
     const content = content_ref.current;
     const deadline_time = deadline_time_ref.current;
     const deadline_member_count = deadline_member_count_ref.current;
 
-    onClick([
-      categories.options[categories.selectedIndex].value,
+    onSubmit([
+      curCategory,
       name.value,
       content.value,
       deadline_time.value,
       deadline_member_count.value
     ]);
+  };
+
+  const categoryChangeHandle = category => {
+    console.log(`${curCategory} -> ${category}`);
+    setCurCategory(category);
   };
 
   const handleFiles = files => {
@@ -55,7 +73,6 @@ const MakeTeam = ({ onClick }) => {
       e => {
         e.stopPropagation();
         e.preventDefault();
-        console.log("dragEnter");
       },
       false
     );
@@ -64,7 +81,6 @@ const MakeTeam = ({ onClick }) => {
       e => {
         e.stopPropagation();
         e.preventDefault();
-        console.log("dragOver");
       },
       false
     );
@@ -78,7 +94,6 @@ const MakeTeam = ({ onClick }) => {
         const files = dt.files;
 
         handleFiles(files);
-        console.log("drop");
       },
       false
     );
@@ -92,49 +107,82 @@ const MakeTeam = ({ onClick }) => {
         </span>
       </div>
       <div className={styles.input_contain}>
-        <div>
-          <span>카테고리</span>
-          <select name="categories" ref={categories_ref}>
-            {CATEGORY.map(category => (
-              <option name={category} key={category}>
-                {category}
-              </option>
-            ))}
-          </select>
+        <div className={styles.block}>
+          <IconContext.Provider value={{ className: styles.icon }}>
+            <FaListUl />
+          </IconContext.Provider>
+          <span className={styles.input_title} style={{ marginBottom: "1rem" }}>
+            카테고리
+          </span>
+          <Category
+            categories={CATEGORY}
+            onCategoryChange={categoryChangeHandle}
+            currentCategory={curCategory}
+          />
         </div>
-        <div>
-          <span>그룹 이름</span>
+        <div className={styles.block}>
+          <IconContext.Provider value={{ className: styles.icon }}>
+            <FaChalkboardTeacher />
+          </IconContext.Provider>
+          <span className={styles.input_title}>그룹 이름</span>
           <input
             type="text"
             placeholder="그룹 이름"
             ref={name_ref}
             className={styles.input}
+            onChange={e => {
+              name_txt_ref.current.innerHTML = e.target.value;
+            }}
           />
+          <span className={styles.preview} ref={name_txt_ref} />
         </div>
-        <div>
-          <span>그룹 설명</span>
-          <textarea ref={content_ref}></textarea>
+        <div className={styles.block}>
+          <IconContext.Provider value={{ className: styles.icon }}>
+            <FaClipboard />
+          </IconContext.Provider>
+          <span className={styles.input_title}>그룹 설명</span>
+          <textarea
+            ref={content_ref}
+            className={`${styles.input} ${styles.textarea}`}
+          ></textarea>
         </div>
-        <div>
-          <span>마감 일자</span>
+        <div className={styles.block}>
+          <IconContext.Provider value={{ className: styles.icon }}>
+            <FaRegCalendarTimes />
+          </IconContext.Provider>
+          <span className={styles.input_title}>마감 일자</span>
           <input
             type="text"
-            placeholder="마감 일자"
+            placeholder="xxxx-xx-xx"
             ref={deadline_time_ref}
             className={styles.input}
+            onChange={e => {
+              date_txt_ref.current.innerHTML = e.target.value;
+            }}
           />
+          <span className={styles.preview} ref={date_txt_ref} />
         </div>
-        <div>
-          <span>제한 인원</span>
+        <div className={`${styles.block} ${styles.deadline_member_contain}`}>
+          <IconContext.Provider value={{ className: styles.icon }}>
+            <FaUserTimes />
+          </IconContext.Provider>
+          <span className={styles.input_title}>제한 인원</span>
           <input
             type="text"
             placeholder="제한 인원"
             ref={deadline_member_count_ref}
             className={styles.input}
+            onChange={e => {
+              num_txt_ref.current.innerHTML = e.target.value;
+            }}
           />
+          <span className={styles.preview} ref={num_txt_ref} />
+          <span className={styles.preview}>인</span>
         </div>
-        <div>
-          <button onClick={submitClickHandle}>생성</button>
+        <div className={styles.submit_contain}>
+          <button onClick={submitClickHandle} className={styles.submit}>
+            그룹 생성
+          </button>
         </div>
       </div>
     </div>

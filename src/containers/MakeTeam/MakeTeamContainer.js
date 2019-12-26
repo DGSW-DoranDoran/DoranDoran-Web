@@ -33,7 +33,7 @@ const MakeTeamContainer = ({ store }) => {
     }
   };
 
-  const clickHandle = input => {
+  const submitHandle = input => {
     if (input) {
       //빈 입력이 있는지 없는지
       if (!input.some(el => el === "")) {
@@ -41,7 +41,7 @@ const MakeTeamContainer = ({ store }) => {
           console.log(res);
           makeTeamStore.postGroup(res);
         });
-        alert("제대로 입력 됌");
+        alert("요청을 전송합니다");
         return;
       }
     }
@@ -51,7 +51,7 @@ const MakeTeamContainer = ({ store }) => {
   return (
     <>
       <Navbar />
-      <MakeTeam onClick={clickHandle} />
+      <MakeTeam onSubmit={submitHandle} />
     </>
   );
 };
