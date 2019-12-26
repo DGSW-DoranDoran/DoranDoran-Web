@@ -22,11 +22,7 @@ class loginStore {
 
   @action loginOnClick = async () => {
     this.token = await loginRepository.login();
-    if (this.token === null) {
-      alert("로그인에 실패하였습니다.");
-      this.usernameOnChange("");
-      this.passwordOnChange("");
-    } else if (this.token) {
+    if (this.token) {
       localStorage.setItem(
         "userToken",
         JSON.stringify({
@@ -34,6 +30,10 @@ class loginStore {
         })
       );
       window.location.reload();
+    } else if (this.token === null) {
+      alert("로그인에 실패하였습니다.");
+      this.usernameOnChange("");
+      this.passwordOnChange("");
     }
     console.log(
       "id: " +

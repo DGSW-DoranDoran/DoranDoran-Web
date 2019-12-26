@@ -1,30 +1,18 @@
 @import "./ColorScheme.scss";
 
-#root {
-  height: 100%;
-  width: 100%;
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0 0;
-  background: #f3f2f2;
-}
-h4 {
+.log-font {
   font-size: 24px;
   font-weight: 600;
   color: #000;
   opacity: 0.85;
 }
-label {
+.log-label {
   font-size: 12.5px;
   color: #000;
   opacity: 0.8;
   font-weight: 400;
 }
-form {
+.log-in {
   padding: 40px 30px;
   background: #fefefe;
   display: flex;
@@ -38,19 +26,19 @@ form {
   margin-left: -150px;
   margin-top: -150px;
 
-  h4 {
+  .log-font {
     margin-bottom: 20px;
     color: rgba($my_blue, 0.7);
     padding-top: 1em;
     font-size: 4em;
     font-family: "Indie Flower", cursive !important;
-    span {
+    .log-span {
       color: rgba($my_blue, 1);
       font-weight: 700;
       font-family: "Indie Flower", cursive !important;
     }
   }
-  p {
+  .log-p {
     line-height: 155%;
     margin-bottom: 5px;
     font-size: 1.1em;
@@ -123,7 +111,7 @@ a.discrete {
   position: relative;
   margin-bottom: 10px;
   width: 100%;
-  label {
+  .log-label {
     position: absolute;
     top: calc(50% - 7px);
     left: calc(20% - 112px);
@@ -131,7 +119,7 @@ a.discrete {
     transition: all 0.3s ease;
     padding-left: 44px;
   }
-  input {
+  .Auth-input {
     margin: auto;
     display: flex;
   }
@@ -153,14 +141,14 @@ a.discrete {
       }
     }
   }
-  input:not(:placeholder-shown) {
+  .Auth-input:not(:placeholder-shown) {
     padding: 28px 0px 12px 0px;
   }
-  input:not(:placeholder-shown) + label {
+  .Auth-input:not(:placeholder-shown) + .log-label {
     transform: translateY(-10px);
     opacity: 0.7;
   }
-  input:valid:not(:placeholder-shown) + label + .icon {
+  .Auth-input:valid:not(:placeholder-shown) + .log-label + .icon {
     svg {
       opacity: 1;
       path {
@@ -168,7 +156,7 @@ a.discrete {
       }
     }
   }
-  input:not(:valid):not(:focus) + label + .icon {
+  .Auth-input:not(:valid):not(:focus) + .log-label + .icon {
     animation-name: shake-shake;
     animation-duration: 0.3s;
   }
@@ -197,7 +185,7 @@ $displacement: 3px;
 .wrapper {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
 }
 .session {
   position: absolute;
