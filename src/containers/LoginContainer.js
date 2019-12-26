@@ -28,10 +28,10 @@ const LoginContainer = ({ store, authenticated }) => {
         <div className="session">
           <div className="left"></div>
           <form action="" className="log-in" autocomplete="off">
-            <h4>
-              DoranDoran <span>LogIn</span>
+            <h4 className="log-font">
+              DoranDoran <span className="log-span">LogIn</span>
             </h4>
-            <p>Please Login</p>
+            <p className="log-p">Please Login</p>
             <div className="floating-label">
               <input
                 className="Auth-input"
@@ -44,7 +44,9 @@ const LoginContainer = ({ store, authenticated }) => {
                 autocomplete="off"
               />
 
-              <label for="id">UserId:</label>
+              <label className="log-label" for="id">
+                UserId:
+              </label>
             </div>
             <div className="floating-label">
               <input
@@ -57,7 +59,9 @@ const LoginContainer = ({ store, authenticated }) => {
                 type="password"
                 autocomplete="off"
               />
-              <label for="password">UserPassword:</label>
+              <label className="log-label" for="password">
+                UserPassword:
+              </label>
             </div>
 
             <button
