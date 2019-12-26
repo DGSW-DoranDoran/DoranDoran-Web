@@ -1,40 +1,41 @@
 import axios from 'axios';
-import { SERVER } from '../../config/config.json';
+import {SERVER} from '../../config/config.json';
 
 class groupRepository {
   getGroup = async (group_id) => {
-    let group;
-
+    let response;
     await axios
-      .get(`${SERVER}/group/show`,{
-        group_id
+      .get(`${SERVER}group/info/`,{
+        params: {group_id}
       })
-      .then(({data:{group}}) => {
-        console.log(group);
+      .then(({data:{data:{groupInfo}}}) => {
+        response = groupInfo
+        console.log(response)
       })
       .catch(err => {
         console.log(err);
       });
-      return group;
+      return response;
   };
 
   getComment = async (group_id) => {
     let response;
     
     await axios
-      .get(`${SERVER}/group/comment`,{
+      .get(`${SERVER}group/comment/`,{
         params: {
           group_id
         }
       })
-      .then(({data : {data: {comment}}}) => {
-        response = comment;
-        console.log(response)
+      .then(({data:{data:{comments}}}) => {
+        response = comments;
+        console.log(comments)
       })
       .catch(err => {
         console.log(err);
         return(err);
       });
+      return response;
   };
 
   postComment = async (group_id, member_id, comment) => {

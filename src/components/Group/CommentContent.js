@@ -1,41 +1,39 @@
 import React from 'react';
 
-const CommentContent = () => {
+const CommentContent = ({content}) => {
+  console.log(content);
+ 
+  let comment = content.map((item, index, array)=> {
+    return (
+      <div className="group-comment">
+        <h1 className="group-c1">
+          {array[index].member_id}
+        </h1>
+        <h3 className="group-c3">
+          {array[index].comment}
+        </h3>
+        {/* <h4 className="group-c4">
+          08/28
+        </h4> */}
+      </div>
+    ) 
+  })
+
+  let submitComment=(
+    <div>
+      <div>
+
+      </div>
+      <div>
+
+      </div>
+      <button></button>
+    </div>
+  );
   return (
     <div className="group-commentContent">
-      <div className="group-comment">
-        <h1 className="group-c1">
-          진정호
-        </h1>
-        <h3 className="group-c3">
-          댓글 1
-        </h3>
-        <h4 className="group-c4">
-          08/28
-        </h4>
-      </div>
-      <div className="group-comment">
-        <h1 className="group-c1">
-          이재민
-        </h1>
-        <h3 className="group-c3">
-          댓글 2
-        </h3>
-        <h4 className="group-c4">
-          08/29
-        </h4>
-      </div>
-      <div className="group-comment">
-        <h1 className="group-c1">
-          김세한
-        </h1>
-        <h3 className="group-c3">
-          댓글 3
-        </h3>
-        <h4 className="group-c4">
-          08/30
-        </h4>
-      </div>
+      {submitComment}
+      {comment}
     </div>
   );
 };
