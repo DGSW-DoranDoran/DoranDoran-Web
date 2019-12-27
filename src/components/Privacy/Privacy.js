@@ -12,15 +12,19 @@ const Privacy = ({
 }) => {
   return (
     <div className="Privacy">
-      <div>
-        <div>{image}</div>
-        <div>{name}</div>
-        <div>
-          사용자 ID:
-          <small>{member_id}</small>
+      <div className="P-profileWrap">
+        <div className="P-profile">
+          <img src="../../assets/LoginBackground.jpeg" className="P-Img">
+            {image}
+          </img>
+          <div className="P-font">{name}</div>
+          <div>
+            사용자 ID:
+            <small>{member_id}</small>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="P-SubProfile">
         <div>성별: ({gender})</div>
         <div>연락처: {phone_number}</div>
         <div>학년: {grade}</div>

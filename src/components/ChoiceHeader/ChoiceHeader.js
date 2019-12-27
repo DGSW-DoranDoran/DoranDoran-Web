@@ -1,17 +1,26 @@
 import React from "react";
+import "./ChoiceHeader.scss";
 
 const ChoiceHeader = ({ onClick }) => {
   return (
     <div className="ChoiceHeader">
-      <input type="button" onClick={() => onClick("MASTERTEAM")}>
-        "팀 관리"
-      </input>
-      <input type="button" onClick={() => onClick("ASSISTANTTEAM")}>
-        "부원인 팀"
-      </input>
-      <input type="button" onClick={() => onClick("WAITINGTEAM")}>
-        "신청 대기중인 팀"
-      </input>
+      <button onClick={() => onClick("MASTER")} className="c-item">
+        팀 관리
+      </button>
+      <button
+        type="button"
+        onClick={() => onClick("ASSISTANT")}
+        className="c-item"
+      >
+        부원인 팀
+      </button>
+      <button
+        type="button"
+        onClick={() => onClick("WAITING")}
+        className="c-item"
+      >
+        신청 대기 중인 팀
+      </button>
     </div>
   );
 };

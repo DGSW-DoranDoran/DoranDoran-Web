@@ -1,0 +1,49 @@
+.Privacy {
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 50px;
+  height: 22%;
+  display: flex;
+  width: 100%;
+}
+
+.P-profileWrap {
+  width: 310px;
+  height: 310px;
+  position: relative;
+  color: white;
+}
+
+.P-profile {
+  position: inherit;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: rgba(4, 0, 0, 0.03) 0px 5px 10px 0px;
+}
+
+.P-Img {
+  width: 100px;
+  height: 100px;
+}
+
+.P-font {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.P-SubProfile {
+  display: flex;
+  height: 310px;
+  flex-direction: column;
+  flex: 1 0 0%;
+  padding: 0px 30px;
+  border-top: 1px solid rgb(238, 238, 238);
+  border-right: 1px solid rgb(238, 238, 238);
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
