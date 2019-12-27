@@ -28,25 +28,22 @@ class loginStore {
   @action loginOnClick = async () => {
     const data = await loginRepository.login(this.username, this.password);
     console.log(data);
-    this.token = data.data.token;
-    if (this.token === null) {
+    if(data===undefined){
       alert("로그인에 실패하였습니다.");
       this.usernameOnChange("");
       this.passwordOnChange("");
-    } else {
+    }
+      else {
+        this.token = data.data.token;
       localStorage.setItem(
         "userToken",
         JSON.stringify({
           token: this.token
-        })
-      );
-      this.member = data.data.member;
-      console.log(this.member);
-
-      // this.checkToken(1);
-      // window.location.reload();
+          })
+        );
+        window.location.reload();
+      };
     }
-  };
 
   @action handleKeyPress = e => {
     if (e.key === "Enter") {

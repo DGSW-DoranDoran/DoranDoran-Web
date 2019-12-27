@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {SERVER} from '../../config/config.json';
+import {SERVER, KIM_SERVER} from '../../config/config.json';
 
 class groupRepository {
   getGroup = async (group_id) => {
     let response;
     await axios
-      .get(`${SERVER}group/info/`,{
+      .get(`${KIM_SERVER}/group/info/`,{
         params: {group_id}
       })
       .then(({data:{data:{groupInfo}}}) => {
@@ -21,7 +21,7 @@ class groupRepository {
     let response;
     
     await axios
-      .get(`${SERVER}group/comment/`,{
+      .get(`${KIM_SERVER}/group/comment/`,{
         params: {
           group_id
         }
@@ -38,7 +38,7 @@ class groupRepository {
 
   postComment = async (group_id, member_id, comment,) => {
     await axios
-      .post(`${SERVER}group/comment`,{
+      .post(`${KIM_SERVER}/group/comment`,{
         group_id,
         member_id,  
         comment
@@ -53,7 +53,7 @@ class groupRepository {
 
   applyJoin = async (group_id,token) => {
     await axios
-      .post(`${SERVER}group/join`, {
+      .post(`${KIM_SERVER}/group/join`, {
         group_id
       },  {headers: { token: token }})
       .then(response => {
@@ -61,20 +61,20 @@ class groupRepository {
       })
       .catch(err => {
         console.log(err);
-        alert("이미 신청중인 그룹입니다.");
+        alert("이미 신청(가입)중인 그룹입니다.");
       })
   }
 
   getMember = async (member_id) => {
     let data;
     await axios
-      .get(`${SERVER}auth/info`,{
+      .get(`${KIM_SERVER}/auth/info`,{
         params : {
           member_id
         }
       })
       .then(({data:{data:{info}}}) => {
-        data = info;
+        data = info;  
       })
       .catch(err => {
         console.log(err);

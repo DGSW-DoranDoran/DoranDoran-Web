@@ -138,11 +138,47 @@
 
 .group-form-div{
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .group-btn{
   background-color: $my-white;
   border: none;
   cursor: pointer;
+}
+
+.group-comment-submit{
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.group-comment-input{
+  margin-left: 1%;
+  display: flex;
+  width: 94%;
+}
+
+.group-comment-submit-input{
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  background-color: $my_smoothgray;
+}
+
+.group-comment-submit-btn{
+  width: 5%;
+  border-radius: 10px;
+  background-color: $my_smoothgray;
+  margin-left:-4%;
+  border: none;
+  cursor: pointer;
+}
+
+.group-comment-submit-name{
+  background-color: $my_smoothgray;
+  border-radius: 30px;
+  width: 10%;
+  display: flex;
+  justify-content: center;
 }

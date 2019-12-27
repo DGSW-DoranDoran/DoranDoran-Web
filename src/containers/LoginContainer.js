@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Redirect } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import "style/Login.scss";
 
 const LoginContainer = ({ store, authenticated }) => {
   const { loginStore } = store;
-
-  function fetch() {
-    if (loginStore.checkToken === 1) {
-      // eslint-disable-next-line no-unused-expressions
-      <Redirect to={"/makeTeam"} />;
-    }
-  }
-
+  const userToken = localStorage.getItem('userToken');
   return (
     <>
-      {fetch}
-      <div className="wrapper">
+      {userToken !== null && (
+        <Redirect to={{ pathname: '/group'}} />
+      )}
+      <div className ="wrapper">
         <div className="session">
           <div className="left"></div>
           <form action="" className="log-in" autocomplete="off">

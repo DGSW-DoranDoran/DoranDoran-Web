@@ -3,10 +3,10 @@ import { SERVER } from "../../config/config.json";
 
 class loginRepository {
   login = async (username, password) => {
-    let response = null;
+    let response = undefined;
     // let status = null;
     await axios
-      .post(`http://10.80.162.235:3001/auth/login/`, {
+      .post(`${SERVER}/auth/login/`, {
         id: username,
         password
       })
@@ -30,7 +30,6 @@ class loginRepository {
       })
       .catch(err => {
         console.log(err);
-        return 0;
       });
     return response;
   };

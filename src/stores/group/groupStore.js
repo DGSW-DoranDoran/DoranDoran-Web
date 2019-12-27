@@ -20,12 +20,22 @@ class groupStore {
     groupMember:"",
     applyJoin:"",
     content:"",
+    image:""
   };
   @observable groupId=null;
   @observable flag=true;
   @observable count=true;
   @observable memberId="";
   @observable image="";
+  @observable member={
+    gender:"",
+    grade:"",
+    image:"",
+    name:"",
+    phone:"",
+    position:""
+  };
+
 
   @action handleButtonClick = (e) => {
     e.preventDefault();
@@ -38,8 +48,10 @@ class groupStore {
 
   @action setMemberId = () => {
     const jwtDecode = require('jwt-decode');
-    const token = JSON.parse(localStorage.getItem('userToken')).token; 
-    this.memberId = jwtDecode(token).id;
+    if(localStorage.getItem('userToken') !==null){
+      const token = JSON.parse(localStorage.getItem('userToken')).token; 
+      this.memberId = jwtDecode(token).id;
+    }
   }
 
   @action getComment = async () => {
@@ -64,8 +76,7 @@ class groupStore {
   }
 
   @action getMember = async () => {
-    let member = await groupRepository.getMember(this.memberId);
-    this.image = member.image;
+    this.member = await groupRepository.getMember(this.memberId);
   }
 }
 

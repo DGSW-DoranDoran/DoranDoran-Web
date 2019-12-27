@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TitleContent = ({
@@ -32,8 +32,8 @@ const TitleContent = ({
   if (member) {
     memberDiv = member.map((item, index, array) => {
       return (
-        <div className="group-comment">
-          <h3 className="group-c3">{array[index].member_id}</h3>
+        <div className="group-member">
+          <h3 className="group-c3" style={{margin:"1%"}}>{array[index].member_id}</h3>
         </div>
       );
     });
@@ -55,15 +55,31 @@ const TitleContent = ({
           <h3 className="group-form-bottom-txt" style={{ marginRight: "3%" }}>
             멤버수: {curMember}명/{maxMember}명{" "}
           </h3>
-          <button
-            type="button"
-            className="group-btn"
-            onClick={() => setFlag(1)}
-          >
-            <FontAwesomeIcon icon={faAngleDoubleDown} />
-          </button>
+          {
+          flag === 1
+           ? (
+              <>
+                <div className="group-member-form">
+                  {memberDiv}
+                </div>
+                <button
+                type="button"
+                className="group-btn"
+                onClick={() => setFlag(0)}
+                > <FontAwesomeIcon icon={faAngleDoubleUp} />
+                </button>
+              </>
+             )
+           : (
+              <button
+               type="button"
+               className="group-btn"
+               onClick={() => setFlag(1)}
+              > <FontAwesomeIcon icon={faAngleDoubleDown} />
+              </button>
+             )
+        }
         </div>
-        {flag === 1 && memberDiv}
         <h3 className="group-form-bottom-txt">
           마감일: {expireDate} {expireTime}
         </h3>

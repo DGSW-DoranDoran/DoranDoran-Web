@@ -5,6 +5,8 @@ import Navbar from '../../components/Navbar';
 import TitleContent from '../../components/Group/TitleContent';
 import GroupContent from '../../components/Group/GroupContent';
 import CommentContent from '../../components/Group/CommentContent';
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const GroupContainer =  ({store, groupId}) => {
   const { groupStore } = store;
@@ -47,17 +49,17 @@ const GroupContainer =  ({store, groupId}) => {
               </div>
               {
                 groupStore.flag === true
-                  ? <GroupContent content={groupStore.group.content}/>
+                  ? <GroupContent content={groupStore.group.content} image={groupStore.group.image} />
                   : 
                     <div className="group-commentContent">
                       <div className="group-comment-submit">
-                        <div className="group-comment-submit-img">
-                          user_img
+                        <div className="group-comment-submit-name">
+                          <h3>{groupStore.member.name}</h3>
                         </div>
                         <div className="group-comment-input">
                           <input onChange={({ target: { value } }) => groupStore.onChange(value)} value={groupStore.comment} placeholder="댓글을 입력하세요..." className="group-comment-submit-input"></input>
                         </div>
-                        <button className="group-comment-submit-btn" type="submit" onClick={groupStore.postComment}>></button>
+                        <button className="group-comment-submit-btn" type="submit" onClick={groupStore.postComment}><FontAwesomeIcon icon={faPaperPlane} size={"2x"} /></button>
                       </div>
                       <CommentContent content={groupStore.comments} onClick={groupStore.postComment}/>
                     </div>
