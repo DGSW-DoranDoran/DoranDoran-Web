@@ -15,6 +15,10 @@ const Navbar = () => {
       el.classList.toggle(styles.input_focus_on);
   };
 
+  const logout = () => {
+    window.localStorage.removeItem("userToken");
+  }
+
   return (
     <div className={styles.container}>
       <Link to="/group" className={styles.logo_contain}>
@@ -39,8 +43,8 @@ const Navbar = () => {
       <Link to="/MyPage" className={styles.a}>
         마이페이지
       </Link>
-      <Link to="/login" className={styles.a}>
-        로그인
+      <Link to="/login" className={styles.a} onClick={logout}>
+        로그아웃
       </Link>
       <Link to="/" className={styles.a}>
         회원가입
