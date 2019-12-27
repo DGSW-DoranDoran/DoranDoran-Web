@@ -3,6 +3,7 @@
 .li {
   position: relative;
   width: 100%;
+  height: calc(100% / 20);
   list-style: none;
   background-color: $my_white;
   color: $my_blue;
@@ -10,59 +11,68 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 2px;
   border-bottom: 2px solid $my_smoothgray;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  text-align: center;
   left: 50%;
   transform: translateX(-50%);
+  overflow: hidden;
 }
 
 .span {
+  position: relative;
+  top: 50%;
+  left: 0;
   display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: calc(100% / 10);
+  transform: translateY(-50%);
+  height: 100%;
+  padding-left: 1rem;
+  text-align: left;
 }
 
 .id {
-  width: 5%;
 }
 
 .name {
-  width: 5%;
   text-decoration: none;
   color: $my_blue;
-
+  overflow: hidden;
   &:hover {
     filter: brightness(1.3);
   }
 }
 
 .content {
-  width: 25%;
 }
 
 .create_time {
-  width: 10%;
 }
 
 .deadline_time {
-  width: 10%;
 }
 
 .member_count {
-  width: 5%;
 }
 
 .deadline_member_count {
-  width: 5%;
 }
 
 .image {
-  width: 25%;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .status {
-  width: 5%;
 }
 
 .categoryId {
-  width: 5%;
+}
+
+.txt {
+  position: relative;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
 }

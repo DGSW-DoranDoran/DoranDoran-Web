@@ -23,7 +23,6 @@ const GroupList = ({ groups, curCategory, onCategoryChange }) => {
             ))}
           </ul>
         </div>
-        <div className={styles.page_contain}></div>
       </div>
     </div>
   );

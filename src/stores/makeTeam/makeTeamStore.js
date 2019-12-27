@@ -16,9 +16,32 @@ class makeTeamStore {
   @observable curCategory = "대회";
 
   @action postGroup = async input => {
+    console.log("store: ", input);
+
+    const keys = Object.keys(input);
+    const frm = new FormData();
+
+    const makeFrm = () => {
+      for (let i = 0; i < keys.length; i++) {
+        frm.append(keys[i], input[keys[i]]);
+
+        //for문을 다 순회했다면
+        if (i === keys.length - 1) {
+          return new Promise((resolve, reject) => {
+            resolve(frm);
+          });
+        }
+      }
+    };
+
     this.postState = this.POST_STATE.LOADING;
+
+    await makeFrm().then(frm => {
+      console.log("frm: ", frm.has("image"));
+    });
+
     await makeTeamRepository
-      .postGroup(input)
+      .postGroup(frm)
       .then(res => {
         console.log(res);
         this.postState = this.POST_STATE.SUCCESS;

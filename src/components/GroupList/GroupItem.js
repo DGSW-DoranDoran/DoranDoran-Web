@@ -1,12 +1,21 @@
 import React from "react";
 import styles from "./GroupItem.module.scss";
 import { Link } from "react-router-dom";
+import { KIM_SERVER } from "config/config.json";
 
 const GroupItem = ({ group }) => {
   return (
     <li className={styles.li}>
       <span className={`${styles.span} ${styles.id}`}>{group.id}</span>
-      <span className={`${styles.span} ${styles.image}`}>{"일단 이미지"}</span>
+      <span className={styles.span}>
+        {group.image && (
+          <img
+            className={styles.image}
+            src={`${KIM_SERVER}/${group.image}`}
+            alt="image"
+          />
+        )}
+      </span>
       <Link to={`/group/${group.id}`}>
         <span className={`${styles.span} ${styles.name}`}>{group.name}</span>
       </Link>

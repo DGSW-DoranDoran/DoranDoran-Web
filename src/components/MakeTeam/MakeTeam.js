@@ -9,8 +9,15 @@ import {
   FaUserTimes
 } from "react-icons/fa";
 import Category from "components/common/Category";
+import SuccessMakeTeam from "components/MakeTeam/SuccessMakeTeam";
+import FailMakeTeam from "components/MakeTeam/FailMakeTeam";
 
-const MakeTeam = ({ onSubmit, curCategory, categoryChangeHandle }) => {
+const MakeTeam = ({
+  onSubmit,
+  curCategory,
+  categoryChangeHandle,
+  postState
+}) => {
   const CATEGORY = ["대회", "식사", "게임", "프로젝트", "기타"];
 
   const name_ref = useRef(null);
@@ -24,13 +31,15 @@ const MakeTeam = ({ onSubmit, curCategory, categoryChangeHandle }) => {
   const date_txt_ref = useRef(null);
   const name_txt_ref = useRef(null);
 
-  let imageObj = null;
+  const [imageObj, setImageObj] = useState(null);
 
   const submitClickHandle = () => {
     const name = name_ref.current;
     const content = content_ref.current;
     const deadline_time = deadline_time_ref.current;
     const deadline_member_count = deadline_member_count_ref.current;
+
+    console.log(imageObj);
 
     onSubmit([
       curCategory,
@@ -49,7 +58,8 @@ const MakeTeam = ({ onSubmit, curCategory, categoryChangeHandle }) => {
       if (!file.type.startsWith("image/")) {
         continue;
       }
-      imageObj = file;
+
+      setImageObj(file);
 
       const imgEl = document.createElement("img");
       imgEl.classList.add(styles.img);
@@ -100,92 +110,99 @@ const MakeTeam = ({ onSubmit, curCategory, categoryChangeHandle }) => {
   }, []);
 
   return (
-    <div className={styles.contain}>
-      <div className={styles.image_contain} ref={img_dropbox_ref}>
-        <span className={styles.image_placeholder}>
-          그룹을 대표하는 사진을 넣어주세요!
-        </span>
-      </div>
-      <div className={styles.input_contain}>
-        <div className={styles.block}>
-          <IconContext.Provider value={{ className: styles.icon }}>
-            <FaListUl />
-          </IconContext.Provider>
-          <span className={styles.input_title} style={{ marginBottom: "1rem" }}>
-            카테고리
+    <>
+      <div className={styles.contain}>
+        <div className={styles.image_contain} ref={img_dropbox_ref}>
+          <span className={styles.image_placeholder}>
+            그룹을 대표하는 사진을 넣어주세요!
           </span>
-          <Category
-            categories={CATEGORY}
-            onCategoryChange={categoryChangeHandle}
-            currentCategory={curCategory}
-          />
         </div>
-        <div className={styles.block}>
-          <IconContext.Provider value={{ className: styles.icon }}>
-            <FaChalkboardTeacher />
-          </IconContext.Provider>
-          <span className={styles.input_title}>그룹 이름</span>
-          <input
-            type="text"
-            placeholder="그룹 이름"
-            ref={name_ref}
-            className={styles.input}
-            onChange={e => {
-              name_txt_ref.current.innerHTML = e.target.value;
-            }}
-          />
-          <span className={styles.preview} ref={name_txt_ref} />
-        </div>
-        <div className={styles.block}>
-          <IconContext.Provider value={{ className: styles.icon }}>
-            <FaClipboard />
-          </IconContext.Provider>
-          <span className={styles.input_title}>그룹 설명</span>
-          <textarea
-            ref={content_ref}
-            className={`${styles.input} ${styles.textarea}`}
-          />
-        </div>
-        <div className={styles.block}>
-          <IconContext.Provider value={{ className: styles.icon }}>
-            <FaRegCalendarTimes />
-          </IconContext.Provider>
-          <span className={styles.input_title}>마감 일자</span>
-          <input
-            type="text"
-            placeholder="0000-00-00 00:00"
-            ref={deadline_time_ref}
-            className={styles.input}
-            onChange={e => {
-              date_txt_ref.current.innerHTML = e.target.value;
-            }}
-          />
-          <span className={styles.preview} ref={date_txt_ref} />
-        </div>
-        <div className={`${styles.block} ${styles.deadline_member_contain}`}>
-          <IconContext.Provider value={{ className: styles.icon }}>
-            <FaUserTimes />
-          </IconContext.Provider>
-          <span className={styles.input_title}>제한 인원</span>
-          <input
-            type="text"
-            placeholder="제한 인원"
-            ref={deadline_member_count_ref}
-            className={styles.input}
-            onChange={e => {
-              num_txt_ref.current.innerHTML = e.target.value;
-            }}
-          />
-          <span className={styles.preview} ref={num_txt_ref} />
-          <span className={styles.preview}>인</span>
-        </div>
-        <div className={styles.submit_contain}>
-          <button onClick={submitClickHandle} className={styles.submit}>
-            그룹 생성
-          </button>
+        <div className={styles.input_contain}>
+          <div className={styles.block}>
+            <IconContext.Provider value={{ className: styles.icon }}>
+              <FaListUl />
+            </IconContext.Provider>
+            <span
+              className={styles.input_title}
+              style={{ marginBottom: "1rem" }}
+            >
+              카테고리
+            </span>
+            <Category
+              categories={CATEGORY}
+              onCategoryChange={categoryChangeHandle}
+              currentCategory={curCategory}
+            />
+          </div>
+          <div className={styles.block}>
+            <IconContext.Provider value={{ className: styles.icon }}>
+              <FaChalkboardTeacher />
+            </IconContext.Provider>
+            <span className={styles.input_title}>그룹 이름</span>
+            <input
+              type="text"
+              placeholder="그룹 이름"
+              ref={name_ref}
+              className={styles.input}
+              onChange={e => {
+                name_txt_ref.current.innerHTML = e.target.value;
+              }}
+            />
+            <span className={styles.preview} ref={name_txt_ref} />
+          </div>
+          <div className={styles.block}>
+            <IconContext.Provider value={{ className: styles.icon }}>
+              <FaClipboard />
+            </IconContext.Provider>
+            <span className={styles.input_title}>그룹 설명</span>
+            <textarea
+              ref={content_ref}
+              className={`${styles.input} ${styles.textarea}`}
+            />
+          </div>
+          <div className={styles.block}>
+            <IconContext.Provider value={{ className: styles.icon }}>
+              <FaRegCalendarTimes />
+            </IconContext.Provider>
+            <span className={styles.input_title}>마감 일자</span>
+            <input
+              type="text"
+              placeholder="0000-00-00 00:00"
+              ref={deadline_time_ref}
+              className={styles.input}
+              onChange={e => {
+                date_txt_ref.current.innerHTML = e.target.value;
+              }}
+            />
+            <span className={styles.preview} ref={date_txt_ref} />
+          </div>
+          <div className={`${styles.block} ${styles.deadline_member_contain}`}>
+            <IconContext.Provider value={{ className: styles.icon }}>
+              <FaUserTimes />
+            </IconContext.Provider>
+            <span className={styles.input_title}>제한 인원</span>
+            <input
+              type="text"
+              placeholder="제한 인원"
+              ref={deadline_member_count_ref}
+              className={styles.input}
+              onChange={e => {
+                num_txt_ref.current.innerHTML = e.target.value;
+              }}
+            />
+            <span className={styles.preview} ref={num_txt_ref} />
+            <span className={styles.preview}>인</span>
+          </div>
+          <div className={styles.submit_contain}>
+            <button onClick={submitClickHandle} className={styles.submit}>
+              그룹 생성
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      {postState === 2 && <SuccessMakeTeam />}
+      {postState === -1 && <FailMakeTeam />}
+    </>
   );
 };
 

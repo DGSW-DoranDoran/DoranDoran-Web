@@ -16,6 +16,7 @@ const MakeTeamContainer = ({ store }) => {
   const CATEGORY_KEYS = Object.keys(CATEGORY_ENUM);
 
   const parseInput = input => {
+    console.log("before_parseInput: ", input);
     for (let i = 0; i < CATEGORY_KEYS.length; i++) {
       if (input[0] === CATEGORY_KEYS[i]) {
         input[0] = CATEGORY_ENUM[CATEGORY_KEYS[i]];
@@ -34,10 +35,12 @@ const MakeTeamContainer = ({ store }) => {
   };
 
   const submitHandle = input => {
+    console.log("submitHandle: ", input);
     if (input) {
       //빈 입력이 있는지 없는지
       if (!input.some(el => el === "")) {
         parseInput(input).then(res => {
+          console.log("after_parseInput: ", res);
           makeTeamStore.postGroup(res);
         });
         alert("요청을 전송합니다");
@@ -58,6 +61,7 @@ const MakeTeamContainer = ({ store }) => {
         onSubmit={submitHandle}
         curCategory={makeTeamStore.curCategory}
         categoryChangeHandle={categoryChangeHandle}
+        postState={makeTeamStore.postState}
       />
     </>
   );

@@ -1,13 +1,13 @@
 import axios from "axios";
-import { SERVER } from "../../config/config.json";
+import { KIM_SERVER } from "../../config/config.json";
 
 class groupListRepository {
   getGroupAll = () => {
-    return axios.get(`${SERVER}/group/groups`);
+    return axios.get(`${KIM_SERVER}/group/groups`);
   };
 
   getGroupByCategory = category_id => {
-    return axios.get(`${SERVER}/group/groups?category_id=${category_id}`);
+    return axios.get(`${KIM_SERVER}/group/groups?category_id=${category_id}`);
   };
 }
 
