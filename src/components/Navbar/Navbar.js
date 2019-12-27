@@ -46,7 +46,7 @@ const Navbar = () => {
       <Link to="/login" className={styles.a} onClick={logout}>
         로그아웃
       </Link>
-      <Link to="/" className={styles.a}>
+      <Link to="/join" className={styles.a}>
         회원가입
       </Link>
     </div>

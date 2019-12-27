@@ -6,6 +6,8 @@ import GroupPage from "pages/GroupPage";
 import MyPage from "pages/MyPage/MyPage";
 import NotFountPage from "pages/NotFoundPage/NotFoundPage";
 import GroupListPage from "pages/GroupList/GroupListPage";
+import JoinPage from 'pages/JoinPage/JoinPage';
+
 
 const App = () => {
   // const authenticated = window.localStorage.getItem("userToken");
@@ -15,6 +17,7 @@ const App = () => {
       <Route exact path={"/login"} render={() => <LoginPage />} />
       <Route exact path={"/makeTeam"} render={() => <MakeTeamPage />} />
       <Route exact path={"/myPage"} render={() => <MyPage />} />
+      <Route exact path={"/join"} render={() => <JoinPage />} />
       <Route exact path="/group" render={() => <GroupListPage />} />
       <Route exact path="/group/:groupid" component={GroupPage} />
       <Route component={NotFountPage} />

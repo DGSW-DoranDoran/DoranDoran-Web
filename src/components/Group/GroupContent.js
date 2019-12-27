@@ -4,8 +4,8 @@ import {KIM_SERVER} from '../../config/config.json';
 const groupContent =({content,image=""}) => {
   let newImage=""
   if(image!==null){
-    newImage = `${KIM_SERVER}` + image.slice(6);
-  }
+    newImage = `${KIM_SERVER}` + image;
+  } 
   return(
   <div className="group-groupContent">
     { image!==null &&

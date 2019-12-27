@@ -1,9 +1,9 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import "style/Login.scss";
 
-const LoginContainer = ({ store, authenticated }) => {
+const LoginContainer = ({ store,  }) => {
   const { loginStore } = store;
   const userToken = localStorage.getItem('userToken');
   return (
