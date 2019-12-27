@@ -9,13 +9,13 @@ class loginStore {
   @observable password = "";
   @observable member;
   @observable token = "";
-  @observable authenticated = 0;
+  // @observable authenticated = 0;
 
-  @action errormsg = () => {
-    if (this.status === 0) {
-      alert("로그인 에러");
-    }
-  };
+  // @action errormsg = () => {
+  //   if (this.status === 0) {
+  //     alert("로그인 에러");
+  //   }
+  // };
 
   @action usernameOnChange = value => {
     this.username = value;
@@ -27,6 +27,7 @@ class loginStore {
 
   @action loginOnClick = async () => {
     const data = await loginRepository.login(this.username, this.password);
+    console.log(data);
     this.token = data.data.token;
     if (this.token === null) {
       alert("로그인에 실패하였습니다.");
@@ -42,8 +43,8 @@ class loginStore {
       this.member = data.data.member;
       console.log(this.member);
 
-      this.checkToken(1);
-      window.location.reload();
+      // this.checkToken(1);
+      // window.location.reload();
     }
   };
 
@@ -53,13 +54,13 @@ class loginStore {
     }
   };
 
-  @action checkToken = authenticated => {
-    if (authenticated === 1) {
-      return 1;
-    } else {
-      return 0;
-    }
-  };
+  // @action checkToken = authenticated => {
+  //   if (authenticated === 1) {
+  //     return 1;
+  //   } else {
+  //     return 0;
+  //   }
+  // };
   // @action logOutOnClick = async () => {
   //   window.localStorage.removeItem();
   // };
